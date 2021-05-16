@@ -1,5 +1,9 @@
 # Cryptomon
-A crypto based gatcha game for UW Hacks
+A crypto based gatcha game for UW Hacks.
+See main.py for entry script.
+
+# Discord commands
+TODO
 
 # How to use Blockchain.py module
 1. Import the module (`from blockchain import addNewBlock, printBlockchain`)
