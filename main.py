@@ -97,5 +97,5 @@ async def on_message(message):
 
 # Running the bot
 # INSERT YOUR BOT TOKEN ID
-my_secret = 'NzI0Mzg0OTQ3NzUzODQ0NzM2.Xu_aDQ.RIyvlxqPJSBHOIhcYdXNf9JqheQ'
+my_secret = 'INSERT YOUR BOT TOKEN ID'
 bot.run(my_secret)
