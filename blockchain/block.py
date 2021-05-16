@@ -10,7 +10,7 @@ class Block:
         self.previousBlockHash = previousBlockHash
 
     def getTuple(self):
-        return self.blockData.getTuple()
+        return (self.blockData.getTuple(), self.previousBlockHash)
 
     def getHash(self):
         hashId = hashlib.md5()
@@ -18,5 +18,6 @@ class Block:
         hashId.update(repr(toHash).encode('utf-8'))
         return hashId.hexdigest()
 
-    def getData(self):
-        return self.data
+    # returns BlockData object
+    def getBlockData(self):
+        return self.blockData
