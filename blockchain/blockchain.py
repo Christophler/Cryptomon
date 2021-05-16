@@ -1,7 +1,7 @@
 # central blockchain
 
-from blockData import BlockData  # BlockData class
-from block import Block         # Block class
+from blockchain.blockData import BlockData  # BlockData class
+from blockchain.block import Block         # Block class
 
 blockchain = []
 
