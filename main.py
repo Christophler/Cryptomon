@@ -1,16 +1,78 @@
+# Importing the needed libraries
+import os
 import discord
-client = discord.Client()
+import random
 
-@client.event
+# Importing the functions
+from join import join
+from help import help
+from mine import mine
+from sell import sell
+from stocks import stocks
+from validate import validate
+from wallet import wallet
+
+# Setting the discord client variable
+bot = discord.Client()
+
+# Declaring all the global variables needed
+numGraphicCards = 10
+numDogecoin = 0
+numEthereum = 0
+numBitcoin = 0
+encounter = False
+mineInt = 0
+catchInt = 0
+
+
+# Showing that the bot is ready
+@bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+  await join(bot)
 
-@client.event
+
+# Whenever there's a message, this function runs
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
-        return
+  # Setting the variables to globals so that they can be changed in the functions
+  global mineInt
+  global catchInt
+  global encounter
+  global numGraphicCards
+  global numDogecoin
+  global numEthereum
+  global numBitcoin
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+  # Ensures that a user is saying the commands and not the bot
+  if message.author == bot:
+    return
 
-client.run('TOKEN')
+  # Help command
+  if message.content.startswith('$help'):
+    await help(message, discord)
+
+  # Wallet command
+  if message.content.startswith('$wallet'):
+    await wallet(message, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
+
+  # Stocks command
+  if message.content.startswith('$stocks'):
+    await stocks(message)
+
+  # Mine command
+  if message.content.startswith('$mine'):
+    encounter, mineInt = await mine(message, discord, mineInt, numGraphicCards, random)
+
+  # Validate command
+  if message.content.startswith('$validate'):
+    encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await validate(message, encounter, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
+
+  # Sell command
+  if message.content.startswith(('$sell ')):
+    numGraphicCards, numDogecoin, numEthereum, numBitcoin = await sell(message, numDogecoin, numGraphicCards, numEthereum, numBitcoin)
+
+
+# Running the bot
+# THIS HAS MY DISCORD BOT TOKEN, SO JUST REPLACE THESE 2 LINES WITH ASSIGNING THE BOT TOKEN
+my_secret = os.environ['Token']   
+bot.run(my_secret)
