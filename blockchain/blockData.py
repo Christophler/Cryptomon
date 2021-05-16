@@ -1,7 +1,6 @@
 
 # block data will be dependent on how we design the game
 class BlockData:
-    
     def __init__(self, id, name):
         # `id` will depend on game (change later)
         # `name` will depend on game (change later)
