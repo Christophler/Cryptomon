@@ -1,0 +1,4 @@
+# todo
+# central blockchain
+
+blockchain = []
