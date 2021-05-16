@@ -19,5 +19,6 @@ async def mine(message, discord, mineInt, numGraphicCards, random):
   await message.channel.send('Use the **$validate** command to try to catch the crypto!')
   
   encounter = True
+  success = True
 
-  return (encounter, mineInt)
+  return (success, encounter, mineInt)

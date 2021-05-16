@@ -23,6 +23,7 @@ numBitcoin = 0
 encounter = False
 mineInt = 0
 catchInt = 0
+success = False
 
 
 # Showing that the bot is ready
@@ -42,6 +43,7 @@ async def on_message(message):
   global numDogecoin
   global numEthereum
   global numBitcoin
+  global success
 
   # Ensures that a user is saying the commands and not the bot
   if message.author == bot:
@@ -61,15 +63,15 @@ async def on_message(message):
 
   # Mine command
   if message.content.startswith('$mine'):
-    encounter, mineInt = await mine(message, discord, mineInt, numGraphicCards, random)
+    success, encounter, mineInt = await mine(message, discord, mineInt, numGraphicCards, random)
 
   # Validate command
   if message.content.startswith('$validate'):
-    encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await validate(message, encounter, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
+    success, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await validate(message, encounter, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
 
   # Sell command
   if message.content.startswith(('$sell ')):
-    numGraphicCards, numDogecoin, numEthereum, numBitcoin = await sell(message, numDogecoin, numGraphicCards, numEthereum, numBitcoin)
+    success, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await sell(message, numDogecoin, numGraphicCards, numEthereum, numBitcoin)
 
 
 # Running the bot
