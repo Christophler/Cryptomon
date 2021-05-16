@@ -13,7 +13,7 @@ from commands.validate import validate
 from commands.wallet import wallet
 
 # Importing the blockchain functions
-from blockchain.blockchain import addNewBlock, printBlockchain
+from blockchain.blockchain import addNewBlock, printBlockchain, printBlockchainDiscord
 
 # Setting the discord client variable
 bot = discord.Client()
@@ -29,7 +29,7 @@ catchInt = 0
 success = False
 
 # Starting the blockchain with the Genesis block
-addNewBlock("genesis", True, 0, 0, False, 10, 0, 0, 0)
+addNewBlock("Genesis", True, 0, 0, False, 10, 0, 0, 0)
 
 # Showing that the bot is ready
 @bot.event
@@ -50,42 +50,52 @@ async def on_message(message):
   global numBitcoin
   global success
 
+
   # Ensures that a user is saying the commands and not the bot
   if message.author == bot:
     return
+
 
   # Help command
   if message.content.startswith('$help'):
     await help(message, discord)
 
+
   # Wallet command
   if message.content.startswith('$wallet'):
     await wallet(message, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
 
+
   # Stocks command
   if message.content.startswith('$stocks'):
     await stocks(message)
+
 
   # Mine command
   if message.content.startswith('$mine'):
     success, encounter, mineInt = await mine(message, discord, success, mineInt, numGraphicCards, random)
     addNewBlock('Mine', success, mineInt, catchInt, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
 
+
   # Validate command
   if message.content.startswith('$validate'):
     success, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await validate(message, encounter, success, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
     addNewBlock('Validate', success, mineInt, catchInt, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
+
 
   # Sell command
   if message.content.startswith('$sell '):
     success, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await sell(message, success, numDogecoin, numGraphicCards, numEthereum, numBitcoin)
     addNewBlock('Sell', success, mineInt, catchInt, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
 
+
   # Display the blockchain in the terminal
   if message.content.startswith('$print'):
-    printBlockchain()
+    await printBlockchain()
+    await printBlockchainDiscord(message)
+
 
 # Running the bot
 # INSERT YOUR BOT TOKEN ID
-my_secret = 'Your Discord Bot Token ID'
+my_secret = 'NzI0Mzg0OTQ3NzUzODQ0NzM2.Xu_aDQ.RIyvlxqPJSBHOIhcYdXNf9JqheQ'
 bot.run(my_secret)

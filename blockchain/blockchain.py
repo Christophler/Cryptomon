@@ -19,8 +19,8 @@ def addNewBlock(transactionType, success, mineInt, catchInt, encounter, numGraph
     blockchain.append(newBlock)
     return newBlock
 
-
-def printBlockchain():
+# Prints the blockchain in the terminal
+async def printBlockchain():
     for i in range(len(blockchain)):
         block = blockchain[i]
         print("===== Block " + str(i+1) + " =====")
@@ -28,12 +28,13 @@ def printBlockchain():
         print("BlockData: " + str(block.getBlockData().getTuple()))
         print("Previous Hash: " + str(block.getPreviousHash()))
         print()
-        
-def printBlockchainDiscord(message):
+
+# Prints the blockchain in the discord server
+async def printBlockchainDiscord(message):
     for i in range(len(blockchain)):
         block = blockchain[i]
-        message.channel.send("===== Block " + str(i+1) + " =====")
-        message.channel.send("Hash: " + block.getHash())
-        message.channel.send("BlockData: " + str(block.getBlockData().getTuple()))
-        message.channel.send("Previous Hash: " + str(block.getPreviousHash()))
-        message.channel.send("")
+        await message.channel.send("\
+            ================= Block " + str(i+1) + " ================= \n\
+            Hash: " + block.getHash() + "\n\
+            BlockData: " + str(block.getBlockData().getTuple()) +"\n\
+            Previous Hash: " + str(block.getPreviousHash()) + "\n ")
