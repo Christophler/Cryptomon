@@ -1,5 +1,5 @@
 
-async def validate(message, encounter, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin):
+async def validate(message, encounter, success, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin):
   # Check if the user already used the '$mine' command
   if (encounter == False):
     await message.channel.send('You must use the *$mine* command **first** before using *$validate*')

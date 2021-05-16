@@ -1,5 +1,5 @@
 
-async def sell(message, numDogecoin, numGraphicCards, numEthereum, numBitcoin):
+async def sell(message, success, numDogecoin, numGraphicCards, numEthereum, numBitcoin):
   # Dogecoin event
   sellNum = int(message.content.split(' ')[2])
   if (("dogecoin" in message.content) == True):

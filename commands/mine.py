@@ -1,5 +1,5 @@
 
-async def mine(message, discord, mineInt, numGraphicCards, random):
+async def mine(message, discord, success, mineInt, numGraphicCards, random):
   mineInt = random.randint(1,100)
   # Dogecoin encounter
   if (mineInt <= 50):

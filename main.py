@@ -63,15 +63,15 @@ async def on_message(message):
 
   # Mine command
   if message.content.startswith('$mine'):
-    success, encounter, mineInt = await mine(message, discord, mineInt, numGraphicCards, random)
+    success, encounter, mineInt = await mine(message, discord, success, mineInt, numGraphicCards, random)
 
   # Validate command
   if message.content.startswith('$validate'):
-    success, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await validate(message, encounter, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
+    success, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await validate(message, encounter, success, random, mineInt, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
 
   # Sell command
   if message.content.startswith(('$sell ')):
-    success, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await sell(message, numDogecoin, numGraphicCards, numEthereum, numBitcoin)
+    success, numGraphicCards, numDogecoin, numEthereum, numBitcoin = await sell(message, success, numDogecoin, numGraphicCards, numEthereum, numBitcoin)
 
 
 # Running the bot
