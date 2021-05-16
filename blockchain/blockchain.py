@@ -8,7 +8,6 @@ blockchain = []
 # add a new block to the blockchain
 # returns the new block it created
 
-
 def addNewBlock(transactionType, success, mineInt, catchInt, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin):
     blockData = BlockData(transactionType, success, mineInt, catchInt,
                           encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin)
@@ -29,3 +28,12 @@ def printBlockchain():
         print("BlockData: " + str(block.getBlockData().getTuple()))
         print("Previous Hash: " + str(block.getPreviousHash()))
         print()
+        
+def printBlockchainDiscord(message):
+    for i in range(len(blockchain)):
+        block = blockchain[i]
+        message.channel.send("===== Block " + str(i+1) + " =====")
+        message.channel.send("Hash: " + block.getHash())
+        message.channel.send("BlockData: " + str(block.getBlockData().getTuple()))
+        message.channel.send("Previous Hash: " + str(block.getPreviousHash()))
+        message.channel.send("")
