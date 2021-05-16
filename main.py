@@ -4,13 +4,13 @@ import discord
 import random
 
 # Importing the functions
-from join import join
-from help import help
-from mine import mine
-from sell import sell
-from stocks import stocks
-from validate import validate
-from wallet import wallet
+from commands.join import join
+from commands.help import help
+from commands.mine import mine
+from commands.sell import sell
+from commands.stocks import stocks
+from commands.validate import validate
+from commands.wallet import wallet
 
 # Setting the discord client variable
 bot = discord.Client()
@@ -73,6 +73,6 @@ async def on_message(message):
 
 
 # Running the bot
-# THIS HAS MY DISCORD BOT TOKEN, SO JUST REPLACE THESE 2 LINES WITH ASSIGNING THE BOT TOKEN
-my_secret = os.environ['Token']   
+# INSERT YOUR BOT TOKEN ID
+my_secret = 'Your Discord Bot Token ID'
 bot.run(my_secret)

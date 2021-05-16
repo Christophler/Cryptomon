@@ -2,7 +2,7 @@
 async def help(message, discord):
     # Displaying the tutorial
     await message.channel.send('__**TUTORIAL**__')
-    await message.channel.send('Welcome to Cryptomon, a text-based game where you use graphic cards in order to catch cryptocurrency. \n', file=discord.File('welcomeCrypto.jpg')) # THIS REQUIRES THE 'welcomeCrypto.jpg'
+    await message.channel.send('Welcome to Cryptomon, a text-based game where you use graphic cards in order to catch cryptocurrency. \n', file=discord.File('images/welcomeCrypto.jpg')) # THIS REQUIRES THE 'welcomeCrypto.jpg'
 
     # Displaying the command list
     await message.channel.send('__**COMMANDS**__')
