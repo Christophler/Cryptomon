@@ -9,7 +9,7 @@ async def validate(message, encounter, random, mineInt, numGraphicCards, numDoge
     numGraphicCards -= 1
 
     # Dogecoin encounter
-    if (mineInt <= 75):
+    if (mineInt <= 50):
       if (catchInt <= 75):
         numDogecoin += 1
         await message.channel.send('You validated the **Dogecoin**! Nice one! :grin:')
@@ -17,7 +17,7 @@ async def validate(message, encounter, random, mineInt, numGraphicCards, numDoge
         await message.channel.send('You did not have enough computing power to validate the **Dogecoin**. :cry:')
 
     # Etherium encounter
-    if ((mineInt <= 99) and (mineInt > 75)):
+    if ((mineInt > 50) and (mineInt < 90)):
       if (catchInt <= 60):
         numEthereum += 1
         await message.channel.send('You validated the **Ethereum**! Amazing!! :grin:')
@@ -25,7 +25,7 @@ async def validate(message, encounter, random, mineInt, numGraphicCards, numDoge
         await message.channel.send('You did not have enough computing power to validate the **Ethereum**. :cry:')
 
     # Bitcoin encounter
-    if (mineInt == 100):
+    if (mineInt >= 90):
       if (catchInt <= 50):
         numBitcoin += 1
         await message.channel.send('You validated the **Bitcoin**!!! Insane!! :exploding_head:')
