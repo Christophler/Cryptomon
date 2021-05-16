@@ -9,9 +9,12 @@ class Block:
         self.blockData = blockData
         self.previousBlockHash = previousBlockHash
 
+    # don't use this
+    # used for #getHash()
     def getTuple(self):
         return (self.blockData.getTuple(), self.previousBlockHash)
 
+    # get the hash of the block
     def getHash(self):
         hashId = hashlib.md5()
         toHash = self.getTuple()
@@ -21,3 +24,7 @@ class Block:
     # returns BlockData object
     def getBlockData(self):
         return self.blockData
+    
+    # returns the previous hash
+    def getPreviousHash(self):
+        return self.previousBlockHash

@@ -1,27 +1,27 @@
 
-import hashlib
-from block import Block
-from blockData import BlockData
+# How you use blockchain.py
 
-# initialize blockchain
-blockchain = []
+from blockchain import addNewBlock, printBlockchain
 
-# Create block data
-block1Data = BlockData(1211, "Chris")
-block2Data = BlockData(1334, "Henry")
+if __name__ == '__main__':
+    # parameters:
+    # transactionType, success, mineInt, catchInt, encounter, numGraphicCards, numDogecoin, numEthereum, numBitcoin
+    
+    # add blocks to the block chain
+    addNewBlock("genesis", True, 0, 0, False, 10, 0, 0, 0)
+    addNewBlock("sell", False, 0, 0, False, 1, 2, 3, 4)
 
-# Create blocks
-block1 = Block(block1Data, None)
-block2 = Block(block2Data, block1.getHash())
+    printBlockchain() # print out the block chain
+    
+    # what is printed out by printBlockchain:
+    '''
+    ===== Block 1 =====
+    Hash: c6dd0cae19eafbc487e4bad7d267dfb1
+    BlockData: ('genesis', True, 0, 0, False, 10, 0, 0, 0)
+    Previous Hash: None
 
-# Add blockchain
-blockchain.append(block1)
-blockchain.append(block2)
-
-# Print block data
-for i in range(len(blockchain)):
-    # block is block object. See block.py
-    block = blockchain[i]
-    print("============== Block " + str((i+1)) + " ==============")
-    print("Hash: " + str(block.getHash()))
-    print("Data: " + str(block.getBlockData().getTuple()))
+    ===== Block 2 =====
+    Hash: c9afc528ed0e05113bc2f6bdbc402b9f
+    BlockData: ('sell', False, 0, 0, False, 1, 2, 3, 4)
+    Previous Hash: c6dd0cae19eafbc487e4bad7d267dfb1
+    '''
